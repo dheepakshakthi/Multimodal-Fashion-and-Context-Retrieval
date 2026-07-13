@@ -1,0 +1,32 @@
+(master) PS D:\glance\retriever> uv run retrieve.py --query "A person in a bright yellow raincoat."
+22:10:16  INFO      __main__  Loading NegCLIP model on cuda …
+22:10:16  INFO      indexer.model  Loading model arch=ViT-B-32 on device=cuda
+22:10:16  INFO      root  Parsing model identifier. Schema: None, Identifier: ViT-B-32
+22:10:16  INFO      root  Loaded built-in ViT-B-32 model config.
+22:10:17  INFO      httpx  HTTP Request: HEAD https://huggingface.co/timm/vit_base_patch32_clip_224.openai/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
+D:\glance\master\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+22:10:17  INFO      root  Instantiating model architecture: CLIP
+22:10:19  INFO      root  Loading full pretrained weights from: C:\Users\nsdsh\.cache\huggingface\hub\models--timm--vit_base_patch32_clip_224.openai\snapshots\a6f597a30f7b82c51704746581f9a4e41421e878\open_clip_model.safetensors
+22:10:19  INFO      root  Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+22:10:19  INFO      root  Model ViT-B-32 creation process complete.
+22:10:19  INFO      indexer.model  No local NegCLIP weights found; using pretrained='openai'. Set NEGCLIP_WEIGHTS_PATH env var to use NegCLIP weights.
+22:10:19  INFO      root  Parsing tokenizer identifier. Schema: None, Identifier: ViT-B-32
+22:10:19  INFO      root  Attempting to load config from built-in: ViT-B-32
+22:10:19  INFO      root  Using default SimpleTokenizer.
+22:10:19  INFO      __main__  Model loaded.
+22:10:19  INFO      __main__  Opening ChromaDB collection at D:\glance\chroma_store …
+22:10:19  INFO      indexer.store  ChromaDB collection 'fashion_images' opened at D:\glance\chroma_store  (current size: 3200)
+22:10:19  INFO      retriever.search  Query decomposed into 2 segment(s): ['A person', 'a bright yellow raincoat.']
+22:10:19  INFO      retriever.search  Query 'A person in a bright yellow raincoat.' → top-5 results, best score=0.3302
+
+Query : A person in a bright yellow raincoat.
+Results (5 found):
+------------------------------------------------------------------------
+    1.  score=0.3302  D:\glance\val_test2020\test\e636280e96f3863157a4398c92fc299e.jpg
+    2.  score=0.3173  D:\glance\val_test2020\test\f417ce3615ab80f6aa2e6bea9afe00b4.jpg
+    3.  score=0.3157  D:\glance\val_test2020\test\2898c07ef740e24cb05c068998a9e23d.jpg
+    4.  score=0.3141  D:\glance\val_test2020\test\011ccdc0d82e359420e5b578740d7971.jpg
+    5.  score=0.3123  D:\glance\val_test2020\test\1ae9cdebd762234889e60f2c0d07a768.jpg
+------------------------------------------------------------------------
+(master) PS D:\glance\retriever> 

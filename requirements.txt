@@ -1,0 +1,28 @@
+# Fashion Image Search Engine — Python dependencies
+# Install with: pip install -r requirements.txt
+#
+# Tested on Python 3.10+
+# GPU recommended for indexing (CPU works but is slow for 3200 images)
+
+# --- Core ML ---
+torch==2.3.1
+torchvision==0.18.1
+
+# open_clip_torch provides the ViT-B/32 backbone and NegCLIP-compatible
+# loading via open_clip.create_model_and_transforms() and
+# open_clip.get_tokenizer().  NegCLIP weights are a drop-in replacement
+# for any OpenCLIP ViT-B/32 checkpoint.
+open_clip_torch==2.24.0
+
+# --- Vector database ---
+# chromadb ships its own embedded Chroma server; no external process needed.
+chromadb==0.5.3
+
+# --- Image handling ---
+Pillow==10.3.0
+
+# --- Numerical ---
+numpy==1.26.4
+
+# --- Utilities ---
+tqdm==4.66.4          # progress bars during indexing
