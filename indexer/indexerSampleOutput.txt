@@ -1,0 +1,36 @@
+(master) PS D:\glance\indexer> uv run index.py   
+22:04:25  INFO      __main__  === Indexer starting ===
+22:04:25  INFO      __main__  Dataset : D:\glance\val_test2020\test
+22:04:25  INFO      __main__  Store   : D:\glance\chroma_store
+22:04:25  INFO      __main__  Batch   : 64
+22:04:25  INFO      indexer.embedder  Discovered 3200 images in D:\glance\val_test2020\test
+22:04:26  INFO      __main__  Device  : cuda
+22:04:26  INFO      indexer.model  Loading model arch=ViT-B-32 on device=cuda
+22:04:26  INFO      root  Parsing model identifier. Schema: None, Identifier: ViT-B-32
+22:04:26  INFO      root  Loaded built-in ViT-B-32 model config.
+22:04:27  INFO      httpx  HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+22:04:27  INFO      httpx  HTTP Request: HEAD https://huggingface.co/timm/vit_base_patch32_clip_224.openai/resolve/main/open_clip_model.safetensors "HTTP/1.1 302 Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+22:04:27  WARNING   huggingface_hub.utils._http  Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+open_clip_model.safetensors: downloading bytes: █████████████████████████████████████████████████████████████████████████████|  432MB, 4.60MB/s  
+open_clip_model.safetensors: reconstructing file: 100%|█████████████████████████████████████████████████████████████|  605MB /  605MB, 19.3MB/s  
+D:\glance\master\Lib\site-packages\open_clip\factory.py:450: UserWarning: QuickGELU mismatch between final model config (quick_gelu=False) and pretrained tag 'openai' (quick_gelu=True).
+  warnings.warn(
+22:06:05  INFO      root  Instantiating model architecture: CLIP
+22:06:07  INFO      root  Loading full pretrained weights from: C:\Users\nsdsh\.cache\huggingface\hub\models--timm--vit_base_patch32_clip_224.openai\snapshots\a6f597a30f7b82c51704746581f9a4e41421e878\open_clip_model.safetensors
+22:06:08  INFO      root  Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+22:06:08  INFO      root  Model ViT-B-32 creation process complete.
+22:06:08  INFO      indexer.model  No local NegCLIP weights found; using pretrained='openai'. Set NEGCLIP_WEIGHTS_PATH env var to use NegCLIP weights.
+22:06:08  INFO      root  Parsing tokenizer identifier. Schema: None, Identifier: ViT-B-32
+22:06:08  INFO      root  Attempting to load config from built-in: ViT-B-32
+22:06:08  INFO      root  Using default SimpleTokenizer.
+22:06:11  INFO      indexer.store  ChromaDB collection 'fashion_images' opened at D:\glance\chroma_store  (current size: 0)
+22:06:11  INFO      __main__  Already indexed: 0 / 3200 images — 3200 to embed
+Indexing: 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 3200/3200 [00:56<00:00, 56.31img/s]
+22:07:08  INFO      __main__  === Indexing complete ===
+22:07:08  INFO      __main__    Newly inserted : 3200
+22:07:08  INFO      __main__    Skipped (dup)  : 0
+22:07:08  INFO      __main__    Collection size: 3200
+
+Done. 3200 images indexed.
+(master) PS D:\glance\indexer> 
